@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\User\ShowUsers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // Users
+    Route::get('/zaposleni', ShowUsers::class)->name('users')->middleware(['roles:1']);
 });
