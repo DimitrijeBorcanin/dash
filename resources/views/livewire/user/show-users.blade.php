@@ -33,8 +33,8 @@
                                     @endforeach
                                 </select>
                             </td>
-                            <td class="px-6 py-4 text-sm whitespace-no-wrap text-right">
-                                <x-jet-button wire:click="showFormModal({{$user}})"><i class="fa-solid fa-pen"></i></x-jet-button>
+                            <td class="px-6 py-4 text-sm whitespace-no-wrap text-right flex">
+                                <x-jet-button wire:click="showFormModal({{$user}})" class="mr-3"><i class="fa-solid fa-pen"></i></x-jet-button>
                                 <x-jet-danger-button wire:click="showDeleteModal({{$user}})"><i class="fa-solid fa-trash"></i></x-jet-danger-button>
                             </td>
                         </tr>
