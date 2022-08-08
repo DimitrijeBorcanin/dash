@@ -1,5 +1,5 @@
 <?php
-namespace Enum;
+namespace App\Enum;
 
 enum EdgeTypeEnum: string {
     case RAVNE = "Ravne";

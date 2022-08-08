@@ -1,5 +1,5 @@
 <?php
-namespace Enum;
+namespace App\Enum;
 
 enum AmountEnum: string {
     case JEDAN = "1";

@@ -1,5 +1,5 @@
 <?php
-namespace Enum;
+namespace App\Enum;
 
 enum TopTypeEnum: string {
     case MERMER = "Mermer";

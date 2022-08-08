@@ -1,5 +1,5 @@
 <?php
-namespace Enum;
+namespace App\Enum;
 
 enum ProductTypeEnum: string {
     case TRPEZARIJA = "Trpezarijski sto";

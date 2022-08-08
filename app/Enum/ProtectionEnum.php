@@ -1,5 +1,5 @@
 <?php
-namespace Enum;
+namespace App\Enum;
 
 enum ProtectionEnum: string {
     case BEZ = "Bez zaštite";
