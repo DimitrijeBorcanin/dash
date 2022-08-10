@@ -7,4 +7,6 @@ enum TopTypeEnum: string {
     case PORCELAN = "Porcelan";
     case HRAST = "Hrast";
     case STAKLO = "Staklo";
+
+    use ListTrait;
 }

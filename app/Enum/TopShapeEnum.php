@@ -6,4 +6,6 @@ enum TopShapeEnum: string {
     case KONKORD = "Konkord";
     case PRAVOUGAONIK = "Pravougaonik";
     case NEPRAVILAN = "Nepravilan oblik";
+
+    use ListTrait;
 }

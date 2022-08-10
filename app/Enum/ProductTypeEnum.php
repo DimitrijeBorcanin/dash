@@ -10,4 +10,6 @@ enum ProductTypeEnum: string {
     case FOTELJE = "Fotelje";
     case OGLEDALA = "Ogledala";
     case POLICE = "Police";
+
+    use ListTrait;
 }
