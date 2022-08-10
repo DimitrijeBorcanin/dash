@@ -29,4 +29,8 @@ class Customer extends Model
 
         return $address . ', ' . $city;
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

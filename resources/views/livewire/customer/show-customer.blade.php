@@ -51,4 +51,14 @@
     @endif
 
     <x-jet-section-border />
+
+    <a href="{{route('products.create', ["customer" => $customer->id])}}" class="flex cursor-pointer items-center hover:text-gray-500 px-3 md:px-0 mb-5">
+        <i class="fas fa-plus-square text-4xl pr-3"></i>
+        <h2 class="text-2xl">
+            Dodajte porudžbinu za kupca
+        </h2>
+    </a>
+
+    @livewire('orders.show-orders', ["customerId" => $customer->id])
+
 </div>
