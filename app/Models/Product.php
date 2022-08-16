@@ -23,6 +23,10 @@ class Product extends Model
         return number_format($this->attributes['deposit'], 2, ',', '.');
     }
 
+    public function getProfitAttribute(){
+        return $this->attributes["price"] - $this->attributes["transport"];
+    }
+
     public function getAmountWithCurrency($column){
         return number_format($this->{$column}, 2, ',', '.') . ' ' . $this->currency;
     }

@@ -18,6 +18,11 @@
                     </x-jet-nav-link>
                     @endif
                     @if(Auth::user()->hasRoles([1]))
+                    <x-jet-nav-link href="{{ route('profit') }}" :active="request()->routeIs('profit')">
+                        {{ __('Obračun') }}
+                    </x-jet-nav-link>
+                    @endif
+                    @if(Auth::user()->hasRoles([1]))
                     <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
                         {{ __('Zaposleni') }}
                     </x-jet-nav-link>
@@ -147,6 +152,11 @@
             @if(Auth::user()->hasRoles([1,2,3]))
             <x-jet-responsive-nav-link href="{{ route('customers') }}" :active="request()->routeIs('customers')">
                 Kupci
+            </x-jet-responsive-nav-link>
+            @endif
+            @if(Auth::user()->hasRoles([1]))
+            <x-jet-responsive-nav-link href="{{ route('profit') }}" :active="request()->routeIs('profit')">
+                Obračun
             </x-jet-responsive-nav-link>
             @endif
             @if(Auth::user()->hasRoles([1]))

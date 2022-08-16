@@ -10,6 +10,7 @@ use App\Enum\QuantityEnum;
 use App\Enum\TopShapeEnum;
 use App\Enum\TopTypeEnum;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Throwable;
@@ -51,6 +52,10 @@ class ShowOrder extends Component
 
     public function mount(Order $order){
         $this->order = $order;
+
+        if($order->paid && !Auth::user()->hasRoles([1])){
+            abort(403);
+        }
 
         $this->fetchLists();
         $this->setForm($order->product);

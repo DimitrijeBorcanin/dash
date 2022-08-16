@@ -5,6 +5,7 @@ use App\Http\Livewire\Customer\ShowCustomer;
 use App\Http\Livewire\Customer\ShowCustomers;
 use App\Http\Livewire\Orders\Dashboard;
 use App\Http\Livewire\Orders\ShowOrder;
+use App\Http\Livewire\Orders\ShowProfit;
 use App\Http\Livewire\Product\CreateProduct;
 use App\Http\Livewire\User\ShowUsers;
 use Illuminate\Support\Facades\Route;
@@ -39,5 +40,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // Orders
     Route::get('/', Dashboard::class)->name('dashboard');
+    Route::get('/obracun', ShowProfit::class)->name('profit');
     Route::get('/kupci/{customer}/porudzbina/{order}', ShowOrder::class)->name('order')->middleware(['roles:1,2,3']);
 });
