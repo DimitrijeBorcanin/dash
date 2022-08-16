@@ -18,6 +18,7 @@ class ShowOrder extends Component
 {
     public $order;
     protected $listeners = ["updateOrderStatus", "valueChanged" => "updateState"];
+    public $previousPage;
 
     public $isEdit = false;
     public $state = [
@@ -53,6 +54,8 @@ class ShowOrder extends Component
 
         $this->fetchLists();
         $this->setForm($order->product);
+
+        $this->previousPage = url()->previous();
     }
 
     public function updateOrderStatus(\App\Models\Order $order){

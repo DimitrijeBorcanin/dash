@@ -1,8 +1,19 @@
 <div>
-    <div class="w-full mb-3 px-3 md:px-0">
-        <x-jet-label for="search" value="Pretraga" />
-        <x-jet-input id="search" type="text" class="mt-1 block w-full md:w-1/4" wire:model="filter.search" />
-        <x-jet-input-error for="search" class="mt-2" />
+    <div class="w-full mb-3 px-3 md:px-0 flex justify-between flex-col md:flex-row">
+        <div class="w-full md:w-1/4">
+            <x-jet-label for="search" value="Pretraga" />
+            <x-jet-input id="search" type="text" class="mt-1 block w-full" wire:model.debounce.300ms="filter.search" />
+            <x-jet-input-error for="search" class="mt-2" />
+        </div>
+        <div class="w-full md:w-1/4">
+            <x-jet-label for="status" value="Status" />
+                <select wire:model="filter.status" class="rounded-md block mt-1 w-full" id="status">
+                    <option value="0">Svi</option>
+                    @foreach($statuses as $index => $status)
+                            <option value="{{$index + 1}}">{{$status}}</option>
+                    @endforeach
+                </select>
+        </div>
     </div>
     <div class="overflow-x-auto w-full">
         <table class="min-w-full divide-y divide-gray-200 mb-3">
@@ -37,7 +48,7 @@
                         </td>
                         <td class="px-6 py-4 text-sm whitespace-no-wrap text-right">
                             <div>
-                                @livewire('orders.change-status', ["key" => now(), "order" => $order])
+                                @livewire('orders.change-status', ["order" => $order], key($order->id))
                             </div>
                         </td>
                     </tr>
@@ -50,4 +61,13 @@
                 {{ $orders->links('pagination.custom-pagination') }}
         </table>
     </div>    
+
+    <div class="px-3 md:px-0">
+        <x-jet-button wire:click="exportExcel" wire:loading.attr="disabled">
+            <i class="fas fa-file-excel pr-2 text-base"></i>{{ __('Excel') }}
+        </x-jet-button>
+        <x-jet-secondary-button wire:loading.attr="disabled" wire:click="exportPdf">
+            <i class="fas fa-file-pdf pr-2 text-base"></i>{{ __('PDF') }}
+        </x-jet-secondary-button>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
     <div class="flex justify-between mb-5 px-4 lg:px-0">
         <div>
-            <a href="{{url()->previous()}}" class="flex items-center text-blue-400 hover:text-blue-500">
+            <a href="{{$previousPage}}" class="flex items-center text-blue-400 hover:text-blue-500">
                 <i class="fas fa-caret-left mr-1"></i>
                 <h5 class="text-lg">Nazad</h5>
             </a>
