@@ -151,4 +151,11 @@
         @livewire('orders.order-status', ['order' => $order, 'status' => "delivery", 'title' => "Isporučeno", 'roles' => [1,5]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "paid", 'title' => "Razduženje", 'roles' => [1]])
     </div>
+
+    <x-jet-section-border />
+
+    @livewire('orders.attachments', ["order" => $order])
+    <x-jet-section-border />
+
+    @livewire('orders.comments', ["order" => $order])
 </div>
