@@ -20,31 +20,31 @@
         @empty(!$customer->name)
         <div class="mb-3 col-span-5 lg:col-span-1">
             <p class="italic text-sm text-gray-500">Ime i prezime:</p>
-            <p class="text-xl">{{$customer->name}}</p>
+            <p class="text-xl break-words">{{$customer->name}}</p>
         </div>
         @endempty
         @empty(!$customer->email)
         <div class="mb-3 col-span-5 lg:col-span-1">
             <p class="italic text-sm text-gray-500">Email:</p>
-            <p class="text-xl">{{$customer->email}}</p>
+            <p class="text-xl break-words">{{$customer->email}}</p>
         </div>
         @endempty
         @empty(!$customer->instagram)
         <div class="mb-3 col-span-5 lg:col-span-1">
             <p class="italic text-sm text-gray-500">Instagram:</p>
-            <p class="text-xl">{{$customer->instagram}}</p>
+            <p class="text-xl break-words">{{$customer->instagram}}</p>
         </div>
         @endempty
         @empty(!$customer->phone)
         <div class="mb-3 col-span-5 lg:col-span-1">
             <p class="italic text-sm text-gray-500">Telefon:</p>
-            <p class="text-xl">{{$customer->phone}}</p>
+            <p class="text-xl break-words">{{$customer->phone}}</p>
         </div>
         @endempty
         @empty(!$customer->address_and_city)
         <div class="mb-3 col-span-5 lg:col-span-1">
             <p class="italic text-sm text-gray-500">Adresa i grad:</p>
-            <p class="text-xl">{{$customer->address_and_city}}</p>
+            <p class="text-xl break-words">{{$customer->address_and_city}}</p>
         </div>
         @endempty
     </div>
