@@ -67,9 +67,9 @@ class CreateProduct extends Component
         try {
             $product = Product::create($this->state);
             $order = Order::create(["product_id" => $product->id, "customer_id" => $this->customer->id]);
-            if($order->customer->email){
-                Mail::to($order->customer->email)->send(new OrderAccepted($order));
-            }
+            // if($order->customer->email){
+            //     Mail::to($order->customer->email)->send(new OrderAccepted($order));
+            // }
             return redirect()->route('customer', ["customer" => $this->customer->id]);
         } catch (Throwable $e){
             $this->dispatchBrowserEvent('flasherror', ['message' => 'Došlo je do greške!']);
