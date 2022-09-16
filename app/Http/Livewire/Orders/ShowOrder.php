@@ -29,6 +29,7 @@ class ShowOrder extends Component
         "color" => "",
         "height" => "",
         "top_type" => "",
+        "top_name" => "",
         "top_shape" => "",
         "edge_type" => "",
         "protection" => "",
@@ -88,6 +89,7 @@ class ShowOrder extends Component
         $this->state["color"] = $product["color"];
         $this->state["height"] = $product["height"];
         $this->state["top_type"] = $product["top_type"];
+        $this->state["top_name"] = $product["top_name"];
         $this->state["dimensions"] = $product["dimensions"];
         $this->state["top_shape"] = $product["top_shape"];
         $this->state["edge_type"] = $product["edge_type"];
@@ -123,6 +125,7 @@ class ShowOrder extends Component
             "color" => ['required', 'string', 'max:255'],
             "height" => ['required', 'string', 'max:255'],
             "top_type" => ['required', 'string', 'max:255'],
+            "top_name" => ['string', 'max:255'],
             "top_shape" => ['required', 'string', 'max:255'],
             "edge_type" => ['required', 'string', 'max:255'],
             "protection" => ['required', 'string', 'max:255'],

@@ -84,20 +84,26 @@
                         <p class="text-2xl">{{$order->product->top_type}}</p>
                     </div>
                     @endempty
+                    @empty(!$order->product->top_name)
+                    <div class="mb-3 border-b-2 border-dotted">
+                        <p class="italic text-gray-500">Naziv ploče:</p>
+                        <p class="text-2xl">{{$order->product->top_name}}</p>
+                    </div>
+                    @endempty
                     @empty(!$order->product->dimensions)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Dimenzija ploče:</p>
                         <p class="text-2xl">{{$order->product->dimensions}}</p>
                     </div>
                     @endempty
+                </div>
+                <div class="col-span-3 pl-5">
                     @empty(!$order->product->top_shape)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Oblik ploče:</p>
                         <p class="text-2xl">{{$order->product->top_shape}}</p>
                     </div>
                     @endempty
-                </div>
-                <div class="col-span-3 pl-5">
                     @empty(!$order->product->edge_type)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Obrada ivice:</p>
