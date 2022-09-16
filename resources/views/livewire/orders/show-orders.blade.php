@@ -29,10 +29,11 @@
                 @forelse($orders as $order)
                     <tr class="cursor-pointer hover:bg-gray-200" onclick="window.location = '{{ route('order', ['customer' => $order->customer_id, 'order' => $order->id]) }}'">
                         <td class="px-6 py-4 text-sm whitespace-no-wrap">
-                            <p>{{$order->id}}</p>
+                            <p class="text-lg">{{$order->id}}</p>
                             {{-- @if($order->part) 
                             <p>({{$order->part}})</p>
                             @endif --}}
+                            <p>{{$order->formatted_created_at}}</p>
                         </td>
                         <td class="px-6 py-4 text-sm whitespace-no-wrap">
                             <p>{{$order->product->code}}</p>

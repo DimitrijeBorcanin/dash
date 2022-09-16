@@ -12,6 +12,23 @@
         </div>
         @endif
     </div>
+
+    <div class="mb-3 flex items-center justify-between">
+        <h1 class="text-3xl mr-5">ID {{ $order->id }}</h1>
+        <div class="flex items-center">
+            <div class="mr-5">
+                <p class="text-sm">Datum poručivanja:</p>
+                <p class="font-bold">{{$order->formatted_created_at}}</p>
+            </div>
+            <div class="mr-5">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div>
+                <p class="text-sm">30 dana:</p>
+                <p class="font-bold">{{$order->formatted_month_later}}</p>
+            </div>
+        </div>
+    </div>
     
     @if($isEdit)
         @include('livewire.orders.order-edit-form')

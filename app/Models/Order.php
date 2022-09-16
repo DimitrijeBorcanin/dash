@@ -91,6 +91,14 @@ class Order extends Model
         }
     }
 
+    public function getFormattedCreatedAtAttribute(){
+        return Carbon::parse($this->attributes['created_at'])->format('d.m.Y.');
+    }
+
+    public function getFormattedMonthLaterAttribute(){
+        return Carbon::parse($this->attributes['created_at'])->addDays(30)->format('d.m.Y.');
+    }
+
     public function scopeActive($query)
     {
         return $query->whereNull('paid');
