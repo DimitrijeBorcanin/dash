@@ -33,8 +33,7 @@
                 </div>
                 <!-- Height -->
                 <div class="col-span-6 lg:col-span-2">
-                    <x-jet-label for="height" value="Visina" />
-                    <x-jet-input id="height" type="text" class="mt-1 block w-full" wire:model.defer="state.height" autocomplete="height" />
+                    @livewire('forms.select-other', ["value" => $state["height"], "isSelect" => $this->checkList("height", $state["height"]), "list" => $lists["height"], "model" => "state.height", "title" => "Visina", "inputId" => "height", "state" => "height"])
                     <x-jet-input-error for="height" class="mt-2" />
                 </div>
                 <!-- Top type -->
@@ -42,7 +41,7 @@
                     @livewire('forms.select-other', ["value" => $state["top_type"], "isSelect" => $this->checkList("top_type", $state["top_type"]), "list" => $lists["top_type"], "model" => "state.top_type", "title" => "Vrsta ploče", "inputId" => "top_type", "state" => "top_type"])
                     <x-jet-input-error for="top_type" class="mt-2" />
                 </div>
-                <!-- Height -->
+                <!-- Top name -->
                 <div class="col-span-6 lg:col-span-2">
                     <x-jet-label for="top_name" value="Naziv ploče" />
                     <x-jet-input id="top_name" type="text" class="mt-1 block w-full" wire:model.defer="state.top_name" autocomplete="top_name" />

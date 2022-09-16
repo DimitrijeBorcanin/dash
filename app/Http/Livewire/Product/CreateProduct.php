@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Product;
 
 use App\Enum\CurrencyEnum;
 use App\Enum\EdgeTypeEnum;
+use App\Enum\HeightEnum;
 use App\Enum\ProductTypeEnum;
 use App\Enum\ProtectionEnum;
 use App\Enum\QuantityEnum;
@@ -120,7 +121,7 @@ class CreateProduct extends Component
 
     private function fetchLists(){
         $this->lists["type"] = ProductTypeEnum::getList();
-        // $this->lists["height"] = ProductTypeEnum::getList();
+        $this->lists["height"] = HeightEnum::getList();
         $this->lists["top_type"] = TopTypeEnum::getList();
         $this->lists["top_shape"] = TopShapeEnum::getList();
         $this->lists["edge_type"] = EdgeTypeEnum::getList();
