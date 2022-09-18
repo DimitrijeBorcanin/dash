@@ -152,10 +152,20 @@
                     </div>
                     @endempty
                     @empty(!$order->product->deposit)
-                    <div class="mb-3 border-b-2 border-dotted">
-                        <p class="italic text-gray-500">Kapara:</p>
-                        <p class="text-2xl">{{$order->product->getAmountWithCurrency('deposit')}}</p>
+                    <div class="mb-3 border-b-2 border-dotted flex justify-between items-center">
+                        <div>
+                            <p class="italic text-gray-500">Kapara:</p>
+                            <p class="text-2xl">{{$order->product->getAmountWithCurrency('deposit')}}</p>
+                        </div>
+                        <i 
+                            class="fas fa-check-square text-2xl 
+                            @if(Auth::user()->hasRoles([1,2,3])) cursor-pointer @endif 
+                            @if($order->deposit_paid)text-green-500 @else text-gray-200 @endif" 
+                            @if(Auth::user()->hasRoles([1,2,3])) wire:click="toggleDepositPaid" @endif
+                        >
+                        </i>
                     </div>
+                    
                     @endempty
                     @empty(!$order->product->linked)
                     <div class="mb-3 border-b-2 border-dotted">

@@ -11,6 +11,7 @@ use App\Enum\QuantityEnum;
 use App\Enum\TopShapeEnum;
 use App\Enum\TopTypeEnum;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
@@ -171,6 +172,23 @@ class ShowOrder extends Component
 
     public function updateState($state, $value){
         $this->state[$state] = $value;
+    }
+
+    public function toggleDepositPaid(){
+        try {
+            if($this->order->deposit_paid == null){
+                $this->order->deposit_paid = Carbon::now();
+            } else {
+                $this->order->deposit_paid = null;
+            } 
+            $this->order->save();
+            $this->dispatchBrowserEvent('flashsuccess', ['message' => 'Uspešno izmenjen status kapare!']);
+        } catch (Throwable $e){
+            $this->dispatchBrowserEvent('flasherror', ['message' => 'Došlo je do greške!']);
+            if(env('APP_ENV') == 'local'){
+                dd($e->getMessage());
+            }
+        }
     }
 
     public function render()
