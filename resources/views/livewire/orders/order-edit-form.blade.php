@@ -78,30 +78,30 @@
             </div>
             <div class="col-span-6 grid grid-cols-11 gap-6">
                 <!-- Currency -->
-                <div class="col-span-6 lg:col-span-2">
+                <div class="col-span-11 lg:col-span-2">
                     @livewire('forms.select-other', ["value" => $state["currency"], "isSelect" => $this->checkList("currency", $state["currency"]), "list" => $lists["currency"], "model" => "state.currency", "title" => "Moneta", "inputId" => "currency", "state" => "currency"])
                     <x-jet-input-error for="currency" class="mt-2" />
                 </div>
                 <!-- Transport -->
-                <div class="col-span-6 lg:col-span-3">
+                <div class="col-span-11 lg:col-span-3">
                     <x-jet-label for="transport" value="Transport" />
                     <x-jet-input id="transport" type="text" class="mt-1 block w-full" wire:model.defer="state.transport" autocomplete="transport" />
                     <x-jet-input-error for="transport" class="mt-2" />
                 </div>
                 <!-- Price -->
-                <div class="col-span-6 lg:col-span-3">
+                <div class="col-span-11 lg:col-span-3">
                     <x-jet-label for="price" value="Cena" />
                     <x-jet-input id="price" type="text" class="mt-1 block w-full" wire:model.defer="state.price" autocomplete="price" />
                     <x-jet-input-error for="price" class="mt-2" />
                 </div>
                 <!-- Deposit -->
-                <div class="col-span-6 lg:col-span-3">
+                <div class="col-span-11 lg:col-span-3">
                     <x-jet-label for="deposit" value="Kapara" />
                     <x-jet-input id="deposit" type="text" class="mt-1 block w-full" wire:model.defer="state.deposit" autocomplete="deposit" />
                     <x-jet-input-error for="deposit" class="mt-2" />
                 </div>
                 <!-- Linked -->
-                <div class="col-span-6 lg:col-span-3">
+                <div class="col-span-11 lg:col-span-3">
                     <x-jet-label for="linked" value="Vezano za" />
                     <x-jet-input id="linked" type="text" class="mt-1 block w-full" wire:model.defer="state.linked" autocomplete="linked" />
                     <x-jet-input-error for="linked" class="mt-2" />

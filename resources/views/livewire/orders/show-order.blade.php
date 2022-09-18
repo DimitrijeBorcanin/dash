@@ -13,7 +13,7 @@
         @endif
     </div>
 
-    <div class="mb-3 flex items-center justify-between">
+    <div class="mb-3 flex items-center justify-between flex-col md:flex-row">
         <h1 class="text-3xl mr-5">ID {{ $order->id }}</h1>
         <div class="flex items-center">
             <div class="mr-5">
@@ -33,8 +33,8 @@
     @if($isEdit)
         @include('livewire.orders.order-edit-form')
     @else
-    <div class="grid grid-cols-8 gap-6">
-        <div class="col-span-2 pr-5">
+    <div class="grid grid-cols-8 gap-6 px-5 md:px-0">
+        <div class="col-span-8 md:col-span-2 md:pr-5">
             <h2 class="text-3xl pb-3">Informacije o kupcu</h2>
             @empty(!$order->customer->name)
             <div class="mb-3 border-b-2 border-dotted">
@@ -67,10 +67,10 @@
             </div>
             @endempty
         </div>
-        <div class="col-span-6 pl-5">
+        <div class="col-span-8 md:col-span-6 md:pl-5">
             <h2 class="text-3xl pb-3">Informacije o proizvodu</h2>
             <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-3 pr-5">
+                <div class="col-span-6 md:col-span-3 pr-5">
                     @empty(!$order->product->code)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Kod:</p>
@@ -114,7 +114,7 @@
                     </div>
                     @endempty
                 </div>
-                <div class="col-span-3 pl-5">
+                <div class="col-span-6 md:col-span-3 md:pl-5">
                     @empty(!$order->product->top_shape)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Oblik ploče:</p>
@@ -193,7 +193,9 @@
 
     <x-jet-section-border />
 
-    @livewire('orders.attachments', ["order" => $order])
+    <div class="px-5">
+        @livewire('orders.attachments', ["order" => $order])
+    </div>
     <x-jet-section-border />
 
     @livewire('orders.comments', ["order" => $order])

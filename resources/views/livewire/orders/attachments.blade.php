@@ -11,12 +11,12 @@
         </div>
         @endforeach
     </div>
-    <div class="mt-3 flex justify-between">
+    <div class="mt-3 flex justify-between flex-col md:flex-row">
         <div>
             <input type="file" name="attachment" wire:model="attachment" id="attachment" />
             <x-jet-input-error for="attachment" class="mt-2" />
         </div>
-        <div>
+        <div class="w-full flex justify-end">
             <x-jet-button wire:click="upload" wire:loading.attr="disabled">
                 {{ __('Dodaj') }}
             </x-jet-button>
