@@ -39,7 +39,8 @@ class CreateProduct extends Component
         "transport" => "",
         "currency" => "",
         "price" => "",
-        "deposit" => ""
+        "deposit" => "",
+        "linked" => ""
     ];
 
     public $lists = [
@@ -97,7 +98,8 @@ class CreateProduct extends Component
             "transport" => ['required', 'numeric'],
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
-            "deposit" => ['required', 'numeric']
+            "deposit" => ['required', 'numeric'],
+            "linked" => ['integer']
         ], [
             'code.required' => 'Kod je obavezan',
             'type.required' => 'Vrsta proizvoda je obavezna',

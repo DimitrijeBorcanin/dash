@@ -157,6 +157,12 @@
                         <p class="text-2xl">{{$order->product->getAmountWithCurrency('deposit')}}</p>
                     </div>
                     @endempty
+                    @empty(!$order->product->linked)
+                    <div class="mb-3 border-b-2 border-dotted">
+                        <p class="italic text-gray-500">Vezano za:</p>
+                        <p class="text-2xl">ID {{$order->product->linked}}</p>
+                    </div>
+                    @endempty
                 </div>
             </div>
         </div>

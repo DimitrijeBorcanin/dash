@@ -100,6 +100,12 @@
                     <x-jet-input id="deposit" type="text" class="mt-1 block w-full" wire:model.defer="state.deposit" autocomplete="deposit" />
                     <x-jet-input-error for="deposit" class="mt-2" />
                 </div>
+                <!-- Linked -->
+                <div class="col-span-6 lg:col-span-3">
+                    <x-jet-label for="linked" value="Vezano za" />
+                    <x-jet-input id="linked" type="text" class="mt-1 block w-full" wire:model.defer="state.linked" autocomplete="linked" />
+                    <x-jet-input-error for="linked" class="mt-2" />
+                </div>
             </div>
             
         </x-slot>

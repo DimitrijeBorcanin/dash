@@ -38,7 +38,8 @@ class ShowOrder extends Component
         "transport" => "",
         "currency" => "",
         "price" => "",
-        "deposit" => ""
+        "deposit" => "",
+        "linked" => ""
     ];
 
     public $lists = [
@@ -100,6 +101,7 @@ class ShowOrder extends Component
         $this->state["transport"] = (int)$product["transport"];
         $this->state["price"] = (int)$product["price"];
         $this->state["deposit"] = (int)$product["deposit"];
+        $this->state["linked"] = $product["linked"];
     }
 
     public function updateProduct(){
@@ -134,7 +136,8 @@ class ShowOrder extends Component
             "transport" => ['required', 'numeric'],
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
-            "deposit" => ['required', 'numeric']
+            "deposit" => ['required', 'numeric'],
+            "linked" => ['integer']
         ], [
             'code.required' => 'Kod je obavezan',
             'type.required' => 'Vrsta proizvoda je obavezna',
