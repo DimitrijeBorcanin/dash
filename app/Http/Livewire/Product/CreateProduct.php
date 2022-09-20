@@ -68,6 +68,9 @@ class CreateProduct extends Component
     public function createProduct(){
         $this->validation($this->state);
         try {
+            // if(empty($this->state["linked"])){
+            //     $this->state["linked"] = null;
+            // }
             $product = Product::create($this->state);
             $order = Order::create(["product_id" => $product->id, "customer_id" => $this->customer->id]);
             // if($order->customer->email){
@@ -99,7 +102,7 @@ class CreateProduct extends Component
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
             "deposit" => ['required', 'numeric'],
-            "linked" => ['integer']
+            "linked" => ['nullable', 'integer']
         ], [
             'code.required' => 'Kod je obavezan',
             'type.required' => 'Vrsta proizvoda je obavezna',

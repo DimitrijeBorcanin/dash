@@ -31,6 +31,14 @@ class Product extends Model
         return number_format($this->{$column}, 2, ',', '.') . ' ' . $this->currency;
     }
 
+    public function setLinkedAttribute($value){
+        if(empty($value)){
+            $this->attributes["linked"] = null;
+        } else {
+            $this->attributes["linked"] = $value;
+        } 
+    }
+
     public function order(){
         return $this->hasOne(Order::class);
     }

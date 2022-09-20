@@ -108,6 +108,9 @@ class ShowOrder extends Component
     public function updateProduct(){
         $this->validation($this->state);
         try {
+            // if(empty($this->state["linked"])){
+            //     $this->state["linked"] = null;
+            // }
             $this->order->product->update($this->state);
             $this->dispatchBrowserEvent('flashsuccess', ['message' => 'Uspešno izmenjen proizvod!']);
         } catch (Throwable $e){
@@ -138,7 +141,7 @@ class ShowOrder extends Component
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
             "deposit" => ['required', 'numeric'],
-            "linked" => ['integer']
+            "linked" => ['nullable', 'integer']
         ], [
             'code.required' => 'Kod je obavezan',
             'type.required' => 'Vrsta proizvoda je obavezna',
