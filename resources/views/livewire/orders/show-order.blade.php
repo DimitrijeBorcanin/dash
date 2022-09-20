@@ -165,7 +165,12 @@
                         >
                         </i>
                     </div>
-                    
+                    @endempty
+                    @empty(!$order->product->remaining_amount_with_currency)
+                    <div class="mb-3 border-b-2 border-dotted">
+                        <p class="italic text-gray-500">Ostalo za naplatu:</p>
+                        <p class="text-2xl">{{$order->product->remaining_amount_with_currency}}</p>
+                    </div>
                     @endempty
                     @empty(!$order->product->linked)
                     <div class="mb-3 border-b-2 border-dotted">

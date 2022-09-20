@@ -31,6 +31,10 @@ class Product extends Model
         return number_format($this->{$column}, 2, ',', '.') . ' ' . $this->currency;
     }
 
+    public function getRemainingAmountWithCurrencyAttribute(){
+        return number_format($this->attributes["price"] - $this->attributes["deposit"], 2, ',', '.') . ' ' . $this->currency;
+    }
+
     public function setLinkedAttribute($value){
         if(empty($value)){
             $this->attributes["linked"] = null;
