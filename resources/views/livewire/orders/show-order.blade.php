@@ -183,6 +183,11 @@
         </div>
     </div>
     @endif
+   
+    @if(Auth::user()->hasRoles([1]))
+    <x-jet-section-border />
+    @include('livewire.orders.notification-checkboxes')
+    @endif
 
     <x-jet-section-border />
 

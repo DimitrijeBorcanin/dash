@@ -194,6 +194,23 @@ class ShowOrder extends Component
         }
     }
 
+    public function setNotificationCheckbox($field){
+        if(!Auth::user()->hasRoles([1])){
+            return;
+        }
+        if($this->order->{$field} == null){
+            try {
+                $this->order->{$field} = Carbon::now();
+                $this->order->save();
+            } catch (Throwable $e){
+                $this->dispatchBrowserEvent('flasherror', ['message' => 'Došlo je do greške!']);
+                if(env('APP_ENV') == 'local'){
+                    dd($e->getMessage());
+                }
+            }
+        }
+    }
+
     public function render()
     {
         return view('livewire.orders.show-order');
