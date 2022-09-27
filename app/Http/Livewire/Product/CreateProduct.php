@@ -68,9 +68,6 @@ class CreateProduct extends Component
     public function createProduct(){
         $this->validation($this->state);
         try {
-            // if(empty($this->state["linked"])){
-            //     $this->state["linked"] = null;
-            // }
             $product = Product::create($this->state);
             $order = Order::create(["product_id" => $product->id, "customer_id" => $this->customer->id]);
             // if($order->customer->email){

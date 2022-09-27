@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Mail\InstructionsSentMail;
+use App\Models\Order;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+
+class InstructionsSentCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'command:instructionssent';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Check if orders have unchecked instructions sent field.';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        $orders = Order::whereNull('instructions_sent')->get();
+        if(!$orders->isEmpty()){
+            Mail::to('dimitrijeborcanin@gmail.com')->send(new InstructionsSentMail($orders));
+            $this->info('Instruction sent mail has been sent.');
+        } else {
+            $this->info('All orders have instructions sent field checked.');
+        }
+    }
+}

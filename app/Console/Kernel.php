@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Cron;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('command:topordered')->everyMinute()->when(function(){
+            return Cron::shouldIRun('command:topordered', 1440);
+        });
+        $schedule->command('command:instructionssent')->everyMinute()->when(function(){
+            return Cron::shouldIRun('command:instructionssent', 1440);
+        });
+        $schedule->command('command:day25')->everyMinute()->when(function(){
+            return Cron::shouldIRun('command:day25', 1440);
+        });
+        $schedule->command('command:day30')->everyMinute()->when(function(){
+            return Cron::shouldIRun('command:day30', 1440);
+        });
     }
 
     /**
