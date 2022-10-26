@@ -55,5 +55,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Artisan::call('migrate');
             dd('Database is fresh and seeded!');
         });
+
+        Route::get('/clear', function(){
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('route:clear');
+            dd('Cleared!');
+        });
     }
 });
