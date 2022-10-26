@@ -24,7 +24,7 @@ class Product extends Model
     }
 
     public function getProfitAttribute(){
-        return $this->attributes["price"] - $this->attributes["transport"];
+        return $this->attributes["price"] - $this->attributes["transport"] ?? 0;
     }
 
     public function getAmountWithCurrency($column){
