@@ -9,6 +9,7 @@ use App\Http\Livewire\Orders\ShowProfit;
 use App\Http\Livewire\Product\CreateProduct;
 use App\Http\Livewire\User\ShowUsers;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,17 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/obracun', ShowProfit::class)->name('profit');
     Route::get('/kupci/{customer}/porudzbina/{order}', ShowOrder::class)->name('order')->middleware(['roles:1,2,3']);
+
+    //Helpers
+    if(env('APP_DEBUG')){
+        Route::get('/migrate-fresh', function(){
+            Artisan::call('migrate:fresh --seed');
+            dd('Migrated!');
+        });
+
+        Route::get('/migrate', function(){
+            Artisan::call('migrate');
+            dd('Database is fresh and seeded!');
+        });
+    }
 });
