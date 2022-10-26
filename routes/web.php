@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         });
 
         Route::get('/migrate', function(){
-            Artisan::call('migrate');
+            Artisan::call('migrate', ["--force" => true]);
             dd('Database is fresh and seeded!');
         });
 
