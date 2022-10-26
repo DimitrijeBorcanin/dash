@@ -28,11 +28,17 @@ class InstructionsSentCommand extends Command
      *
      * @return int
      */
+    private $emails = ['vladan@dashfurniture.rs'];
+
     public function handle()
     {
         $orders = Order::whereNull('instructions_sent')->get();
         if(!$orders->isEmpty()){
-            Mail::to('dimitrijeborcanin@gmail.com')->send(new InstructionsSentMail($orders));
+            foreach($this->emails as $email){
+                if(env('APP_ENV') != 'local'){
+                    Mail::to($email)->send(new InstructionsSentMail($orders));
+                }
+            }
             $this->info('Instruction sent mail has been sent.');
         } else {
             $this->info('All orders have instructions sent field checked.');

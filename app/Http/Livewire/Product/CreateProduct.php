@@ -37,6 +37,7 @@ class CreateProduct extends Component
         "protection" => "",
         "quantity" => "",
         "transport" => "",
+        "transport_customer" => "",
         "currency" => "",
         "price" => "",
         "deposit" => "",
@@ -70,9 +71,11 @@ class CreateProduct extends Component
         try {
             $product = Product::create($this->state);
             $order = Order::create(["product_id" => $product->id, "customer_id" => $this->customer->id]);
-            // if($order->customer->email){
-            //     Mail::to($order->customer->email)->send(new OrderAccepted($order));
-            // }
+            if($order->customer->email){
+                if(env('APP_ENV') != 'local'){
+                    Mail::to($order->customer->email)->send(new OrderAccepted($order));
+                }
+            }
             return redirect()->route('customer', ["customer" => $this->customer->id]);
         } catch (Throwable $e){
             $this->dispatchBrowserEvent('flasherror', ['message' => 'Došlo je do greške!']);
@@ -95,7 +98,8 @@ class CreateProduct extends Component
             "edge_type" => ['required', 'string', 'max:255'],
             "protection" => ['required', 'string', 'max:255'],
             "quantity" => ['required', 'string', 'max:255'],
-            "transport" => ['required', 'numeric'],
+            "transport" => ['required_without:transport_customer', 'numeric'],
+            "transport_customer" => ['required_without:transport', 'numeric'],
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
             "deposit" => ['required', 'numeric'],
@@ -111,8 +115,10 @@ class CreateProduct extends Component
             'edge_type.required' => 'Obrada ivica je obavezna',
             'protection.required' => 'Zaštita je obavezna',
             'quantity.required' => 'Količina je obavezna',
-            'transport.required' => 'Transport je obavezan',
-            'transport.numeric' => 'Transport mora biti broj',
+            'transport.required_without' => 'Prevoz Dash je obavezan ako je prevoz kupac prazan.',
+            'transport.numeric' => 'Prevoz mora biti broj',
+            'transport_customer.required_without' => 'Prevoz kupac je obavezan ako je prevoz Dash prazan.',
+            'transport_customer.numeric' => 'Prevoz mora biti broj',
             'currency.required' => 'Moneta je obavezna',
             'price.required' => 'Cena je obavezna',
             'price.numeric' => 'Cena mora biti broj',

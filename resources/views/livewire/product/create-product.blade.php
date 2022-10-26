@@ -84,9 +84,15 @@
                 </div>
                 <!-- Transport -->
                 <div class="col-span-6 lg:col-span-3">
-                    <x-jet-label for="transport" value="Transport" />
+                    <x-jet-label for="transport" value="Prevoz Dash" />
                     <x-jet-input id="transport" type="text" class="mt-1 block w-full" wire:model.defer="state.transport" autocomplete="transport" />
                     <x-jet-input-error for="transport" class="mt-2" />
+                </div>
+                <!-- Transport Customer -->
+                <div class="col-span-6 lg:col-span-3">
+                    <x-jet-label for="transport_customer" value="Prevoz kupac" />
+                    <x-jet-input id="transport_customer" type="text" class="mt-1 block w-full" wire:model.defer="state.transport_customer" autocomplete="transport_customer" />
+                    <x-jet-input-error for="transport_customer" class="mt-2" />
                 </div>
                 <!-- Price -->
                 <div class="col-span-6 lg:col-span-3">

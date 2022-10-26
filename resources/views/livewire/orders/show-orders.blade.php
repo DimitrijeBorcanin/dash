@@ -30,6 +30,10 @@
                     <tr class="cursor-pointer hover:bg-gray-200" onclick="window.location = '{{ route('order', ['customer' => $order->customer_id, 'order' => $order->id]) }}'">
                         <td class="px-6 py-4 text-sm whitespace-no-wrap">
                             <p class="text-lg">{{$order->id}}</p>
+                            <p class="text-lg">{{$order->id}}</p>
+                            @if($order->product->linked)
+                            <p class="text-lg">Veza ID{{$order->product->linked}}</p>
+                            @endif
                             {{-- @if($order->part) 
                             <p>({{$order->part}})</p>
                             @endif --}}

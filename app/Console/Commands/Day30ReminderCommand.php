@@ -28,12 +28,18 @@ class Day30ReminderCommand extends Command
      *
      * @return int
      */
+    private $emails = ['vladan@dashfurniture.rs', 'slavica@metalistrpg.rs', 'slavisa@metalistrpg.rs', 'nenad@dashfurniture.rs'];
+
     public function handle()
     {
         $orders = Order::with('product')->whereNull('made')->whereRaw('DATEDIFF(CURRENT_TIMESTAMP, created_at) = 30')->get();
         if(!$orders->isEmpty()){
             foreach($orders as $order){
-                Mail::to('dimitrijeborcanin@gmail.com')->send(new Day30ReminderMail($order));
+                foreach($this->emails as $email){
+                    if(env('APP_ENV') != 'local'){
+                        Mail::to($email)->send(new Day30ReminderMail($order));
+                    }
+                }
             }
             $this->info('Day 30 reminder mail has been sent.');
         } else {

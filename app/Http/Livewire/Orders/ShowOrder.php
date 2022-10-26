@@ -37,6 +37,7 @@ class ShowOrder extends Component
         "protection" => "",
         "quantity" => "",
         "transport" => "",
+        "transport_customer" => "",
         "currency" => "",
         "price" => "",
         "deposit" => "",
@@ -100,6 +101,7 @@ class ShowOrder extends Component
         $this->state["quantity"] = $product["quantity"];
         $this->state["currency"] = $product["currency"];
         $this->state["transport"] = (int)$product["transport"];
+        $this->state["transport_customer"] = (int)$product["transport_customer"];
         $this->state["price"] = (int)$product["price"];
         $this->state["deposit"] = (int)$product["deposit"];
         $this->state["linked"] = $product["linked"];
@@ -137,7 +139,8 @@ class ShowOrder extends Component
             "edge_type" => ['required', 'string', 'max:255'],
             "protection" => ['required', 'string', 'max:255'],
             "quantity" => ['required', 'string', 'max:255'],
-            "transport" => ['required', 'numeric'],
+            "transport" => ['required_without:transport_customer', 'numeric'],
+            "transport_customer" => ['required_without:transport', 'numeric'],
             "currency" => ['required', 'string', 'max:255'],
             "price" => ['required', 'numeric'],
             "deposit" => ['required', 'numeric'],
@@ -153,8 +156,10 @@ class ShowOrder extends Component
             'edge_type.required' => 'Obrada ivica je obavezna',
             'protection.required' => 'Zaštita je obavezna',
             'quantity.required' => 'Količina je obavezna',
-            'transport.required' => 'Transport je obavezan',
-            'transport.numeric' => 'Transport mora biti broj',
+            'transport.required_without' => 'Prevoz Dash je obavezan ako je prevoz kupac prazan.',
+            'transport.numeric' => 'Prevoz mora biti broj',
+            'transport_customer.required_without' => 'Prevoz kupac je obavezan ako je prevoz Dash prazan.',
+            'transport_customer.numeric' => 'Prevoz mora biti broj',
             'currency.required' => 'Moneta je obavezna',
             'price.required' => 'Cena je obavezna',
             'price.numeric' => 'Cena mora biti broj',

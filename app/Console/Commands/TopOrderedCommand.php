@@ -28,11 +28,18 @@ class TopOrderedCommand extends Command
      *
      * @return int
      */
+
+    private $emails = ['vladan@dashfurniture.rs'];
+
     public function handle()
     {
         $orders = Order::whereNull('top_ordered')->get();
         if(!$orders->isEmpty()){
-            Mail::to('dimitrijeborcanin@gmail.com')->send(new TopOrderedMail($orders));
+            foreach($this->emails as $email){
+                if(env('APP_ENV') != 'local'){
+                    Mail::to($email)->send(new TopOrderedMail($orders));
+                }
+            }
             $this->info('Top ordered mail has been sent.');
         } else {
             $this->info('All orders have top ordered field checked.');

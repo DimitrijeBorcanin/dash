@@ -141,8 +141,14 @@
                     @endempty
                     @empty(!$order->product->transport)
                     <div class="mb-3 border-b-2 border-dotted">
-                        <p class="italic text-gray-500">Prevoz:</p>
+                        <p class="italic text-gray-500">Prevoz Dash:</p>
                         <p class="text-2xl">{{$order->product->getAmountWithCurrency('transport')}}</p>
+                    </div>
+                    @endempty
+                    @empty(!$order->product->transport_customer)
+                    <div class="mb-3 border-b-2 border-dotted">
+                        <p class="italic text-gray-500">Prevoz kupac:</p>
+                        <p class="text-2xl">{{$order->product->getAmountWithCurrency('transport_customer')}}</p>
                     </div>
                     @endempty
                     @empty(!$order->product->price)
