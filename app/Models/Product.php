@@ -35,6 +35,22 @@ class Product extends Model
         return number_format($this->attributes["price"] - $this->attributes["deposit"], 2, ',', '.') . ' ' . $this->currency;
     }
 
+    public function setTransportAttribute($value){
+        if(empty($value)){
+            $this->attributes["linked"] = null;
+        } else {
+            $this->attributes["linked"] = $value;
+        } 
+    }
+
+    public function setTransportCustomerAttribute($value){
+        if(empty($value)){
+            $this->attributes["linked"] = null;
+        } else {
+            $this->attributes["linked"] = $value;
+        } 
+    }
+
     public function setLinkedAttribute($value){
         if(empty($value)){
             $this->attributes["linked"] = null;
