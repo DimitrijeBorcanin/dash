@@ -37,17 +37,17 @@ class Product extends Model
 
     public function setTransportAttribute($value){
         if(empty($value)){
-            $this->attributes["linked"] = null;
+            $this->attributes["transport"] = null;
         } else {
-            $this->attributes["linked"] = $value;
+            $this->attributes["transport"] = $value;
         } 
     }
 
     public function setTransportCustomerAttribute($value){
         if(empty($value)){
-            $this->attributes["linked"] = null;
+            $this->attributes["transport_customer"] = null;
         } else {
-            $this->attributes["linked"] = $value;
+            $this->attributes["transport_customer"] = $value;
         } 
     }
 

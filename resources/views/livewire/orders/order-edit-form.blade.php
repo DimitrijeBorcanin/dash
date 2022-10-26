@@ -84,7 +84,7 @@
                 </div>
                 <!-- Transport -->
                 <div class="col-span-11 lg:col-span-3">
-                    <x-jet-label for="transport" value="Prevoz" />
+                    <x-jet-label for="transport" value="Prevoz Dash" />
                     <x-jet-input id="transport" type="text" class="mt-1 block w-full" wire:model.defer="state.transport" autocomplete="transport" />
                     <x-jet-input-error for="transport" class="mt-2" />
                 </div>
