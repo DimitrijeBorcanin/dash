@@ -41,7 +41,7 @@
                         <td class="px-6 py-4 text-sm whitespace-no-wrap">
                             <p>{{$order->product->code}}</p>
                             <p>{{$order->product->dimensions}}</p>
-                            <p>{{$order->product->price}} RSD</p>
+                            <p>{{$order->product->formatted_price}} {{$order->product->currency}}</p>
                         </td>
                         <td class="px-6 py-4 text-sm whitespace-no-wrap">
                             <p>{{$order->customer->name}}</p>
