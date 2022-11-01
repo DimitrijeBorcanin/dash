@@ -70,7 +70,7 @@ class ShowProfit extends Component
         $totalRSD = 0;
         $totalEUR = 0;
         foreach($orders as $order){
-            if($order->product->currency != CurrencyEnum::RSD){
+            if($order->product->currency == CurrencyEnum::RSD->value){
                 $totalRSD += $order->product->profit;
             } else {
                 $totalEUR += $order->product->profit;

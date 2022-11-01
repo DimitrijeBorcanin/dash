@@ -21,7 +21,7 @@
                 <p>{{$order->customer->address_and_city}}</p>
             </td>
             <td>{{$order->paid}}</td>
-            <td>{{$order->product->price}} {{$order->product->currency}}</td>
+            <td>{{$order->product->profit}} {{$order->product->currency}}</td>
         </tr>
     @endforeach
         <tr>
