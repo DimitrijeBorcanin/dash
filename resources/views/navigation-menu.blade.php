@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @if(Auth::user()->hasRoles([1,2,3]))
+                    @if(Auth::user()->hasRoles([1,2,3,4,5]))
                     <x-jet-nav-link href="{{ route('customers') }}" :active="request()->routeIs('customers')">
                         {{ __('Kupci') }}
                     </x-jet-nav-link>
@@ -149,7 +149,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @if(Auth::user()->hasRoles([1,2,3]))
+            @if(Auth::user()->hasRoles([1,2,3,4,5]))
             <x-jet-responsive-nav-link href="{{ route('customers') }}" :active="request()->routeIs('customers')">
                 Kupci
             </x-jet-responsive-nav-link>

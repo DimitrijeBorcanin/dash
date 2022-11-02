@@ -165,9 +165,9 @@
                         </div>
                         <i 
                             class="fas fa-check-square text-2xl 
-                            @if(Auth::user()->hasRoles([1,2,3])) cursor-pointer @endif 
+                            @if(Auth::user()->hasRoles([1,2,3,4,5])) cursor-pointer @endif 
                             @if($order->deposit_paid)text-green-500 @else text-gray-200 @endif" 
-                            @if(Auth::user()->hasRoles([1,2,3])) wire:click="toggleDepositPaid" @endif
+                            @if(Auth::user()->hasRoles([1,2,3,4,5])) wire:click="toggleDepositPaid" @endif
                         >
                         </i>
                     </div>

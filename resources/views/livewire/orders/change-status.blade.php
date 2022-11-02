@@ -6,7 +6,7 @@
     <div>
         @switch($order->currentStatusNumber)
             @case(0)
-                @if(Auth::user()->hasRoles([1,2,3]))
+                @if(Auth::user()->hasRoles([1,2,3,4,5]))
                     <div class="flex items-center justify-end">
                         <p class="mr-3">Za proizvodnju</p> 
                         <i onclick="event.stopPropagation()" class="fas fa-check-square text-xl text-gray-400 hover:text-green-500" wire:click="changeStatus(0)"></i>
