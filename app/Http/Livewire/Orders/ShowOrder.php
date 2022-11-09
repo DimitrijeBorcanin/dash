@@ -62,6 +62,10 @@ class ShowOrder extends Component
             abort(403);
         }
 
+        if(Auth::user()->hasRoles([4]) && ($order->accepted == null || $order->warehouse != null)){
+            abort(403);
+        }
+
         $this->fetchLists();
         $this->setForm($order->product);
 

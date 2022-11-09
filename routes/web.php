@@ -32,12 +32,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/zaposleni', ShowUsers::class)->name('users')->middleware(['roles:1']);
 
     // Customers
-    Route::get('/kupci', ShowCustomers::class)->name('customers')->middleware(['roles:1,2,3,4,5']);
-    Route::get('/kupci/dodaj', CreateCustomer::class)->name('customers.create')->middleware(['roles:1,2,3,4,5']);
-    Route::get('/kupci/{customer}', ShowCustomer::class)->name('customer')->middleware(['roles:1,2,3,4,5']);
+    Route::get('/kupci', ShowCustomers::class)->name('customers')->middleware(['roles:1,2,3,5']);
+    Route::get('/kupci/dodaj', CreateCustomer::class)->name('customers.create')->middleware(['roles:1,2,3,5']);
+    Route::get('/kupci/{customer}', ShowCustomer::class)->name('customer')->middleware(['roles:1,2,3,5']);
 
     // Products
-    Route::get('/kupci/{customer}/porudzbina/dodaj', CreateProduct::class)->name('products.create')->middleware(['roles:1,2,3,4,5']);
+    Route::get('/kupci/{customer}/porudzbina/dodaj', CreateProduct::class)->name('products.create')->middleware(['roles:1,2,3,5']);
 
     // Orders
     Route::get('/', Dashboard::class)->name('dashboard');

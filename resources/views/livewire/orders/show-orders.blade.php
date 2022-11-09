@@ -10,6 +10,9 @@
                 <select wire:model="filter.status" class="rounded-md block mt-1 w-full" id="status">
                     <option value="0">Svi</option>
                     @foreach($statuses as $index => $status)
+                            @if(Auth::user()->hasRoles([4]) && in_array($index, [0,5,6]))
+                                @continue
+                            @endif
                             <option value="{{$index + 1}}">{{$status}}</option>
                     @endforeach
                 </select>

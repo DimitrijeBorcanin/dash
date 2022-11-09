@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Orders;
 use App\Exports\OrdersExport;
 use App\Models\Order;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -60,6 +61,9 @@ class ShowOrders extends Component
                 break;
             default:
                 break;
+        }
+        if(Auth::user()->hasRoles([4])){
+            $orders = $orders->whereNotNull('accepted')->whereNull('warehouse');
         }
         $orders = $orders->where(function($query){
             $query->whereHas('customer', function($query){

@@ -6,7 +6,7 @@
                 <h5 class="text-lg">Nazad</h5>
             </a>
         </div>
-        @if(!$isEdit)
+        @if(!$isEdit && Auth::user()->hasRoles([1,2,3,5]))
         <div class="flex cursor-pointer items-center hover:text-gray-500 px-0" wire:click="toggleEdit()">
             <i class="fas fa-pen-square text-4xl"></i>
         </div>
@@ -30,7 +30,7 @@
         </div>
     </div>
     
-    @if($isEdit)
+    @if($isEdit && Auth::user()->hasRoles([1,2,3,5]))
         @include('livewire.orders.order-edit-form')
     @else
     <div class="grid grid-cols-8 gap-6 px-5 md:px-0">
@@ -139,6 +139,7 @@
                         <p class="text-2xl">{{$order->product->quantity}}</p>
                     </div>
                     @endempty
+                    @if(Auth::user()->hasRoles([1,2,3,5]))
                     @empty(!$order->product->transport)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Prevoz Dash:</p>
@@ -165,9 +166,9 @@
                         </div>
                         <i 
                             class="fas fa-check-square text-2xl 
-                            @if(Auth::user()->hasRoles([1,2,3,4,5])) cursor-pointer @endif 
+                            @if(Auth::user()->hasRoles([1,2,3,5])) cursor-pointer @endif 
                             @if($order->deposit_paid)text-green-500 @else text-gray-200 @endif" 
-                            @if(Auth::user()->hasRoles([1,2,3,4,5])) wire:click="toggleDepositPaid" @endif
+                            @if(Auth::user()->hasRoles([1,2,3,5])) wire:click="toggleDepositPaid" @endif
                         >
                         </i>
                     </div>
@@ -178,6 +179,7 @@
                         <p class="text-2xl">{{$order->product->remaining_amount_with_currency}}</p>
                     </div>
                     @endempty
+                    @endif
                     @empty(!$order->product->linked)
                     <div class="mb-3 border-b-2 border-dotted">
                         <p class="italic text-gray-500">Vezano za:</p>
@@ -198,13 +200,17 @@
     <x-jet-section-border />
 
     <div class="mt-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-6 px-3 md:px-0">
-        @livewire('orders.order-status', ['order' => $order, 'status' => "accepted", 'title' => "Za proizvodnju", 'roles' => [1,2,3]])
+        @if(Auth::user()->hasRoles([1,2,3,5]))
+        @livewire('orders.order-status', ['order' => $order, 'status' => "accepted", 'title' => "Za proizvodnju", 'roles' => [1,2,3,5]])
+        @endif
         @livewire('orders.order-status', ['order' => $order, 'status' => "manufacture", 'title' => "U proizvodnji", 'roles' => [1,4]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "made", 'title' => "Proizvedeno", 'roles' => [1,4]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "transit", 'title' => "U tranzitu", 'roles' => [1,4]])
+        @if(Auth::user()->hasRoles([1,2,3,5]))
         @livewire('orders.order-status', ['order' => $order, 'status' => "warehouse", 'title' => "U magacinu", 'roles' => [1,5]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "delivery", 'title' => "Isporučeno", 'roles' => [1,5]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "paid", 'title' => "Razduženje", 'roles' => [1]])
+        @endif
     </div>
 
     <x-jet-section-border />
