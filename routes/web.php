@@ -62,5 +62,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Artisan::call('route:clear');
             dd('Cleared!');
         });
+
+        Route::get('/cron-test', function(){
+            Artisan::call('command:instructionssent');
+        });
     }
 });
