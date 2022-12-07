@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Mail\InstructionsSentMail;
 use App\Models\Order;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class InstructionsSentCommand extends Command
@@ -33,6 +34,7 @@ class InstructionsSentCommand extends Command
     public function handle()
     {
         $orders = Order::whereNull('instructions_sent')->get();
+        Log::info('Instructions sent command: No of orders: ' . count($orders));
         if(!$orders->isEmpty()){
             foreach($this->emails as $email){
                 if(env('APP_ENV') != 'local'){
@@ -40,8 +42,10 @@ class InstructionsSentCommand extends Command
                 }
             }
             $this->info('Instruction sent mail has been sent.');
+            Log::info('Instruction sent mail has been sent.');
         } else {
             $this->info('All orders have instructions sent field checked.');
+            Log::info('All orders have instructions sent field checked.');
         }
     }
 }
