@@ -7,6 +7,8 @@ use App\Http\Livewire\Orders\Dashboard;
 use App\Http\Livewire\Orders\ShowOrder;
 use App\Http\Livewire\Orders\ShowProfit;
 use App\Http\Livewire\Product\CreateProduct;
+use App\Http\Livewire\Stock\ShowStock;
+use App\Http\Livewire\Stock\ShowStocks;
 use App\Http\Livewire\User\ShowUsers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -43,6 +45,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/obracun', ShowProfit::class)->name('profit')->middleware(['roles:1']);
     Route::get('/kupci/{customer}/porudzbina/{order}', ShowOrder::class)->name('order')->middleware(['roles:1,2,3,4,5']);
+
+    // Stocks 
+    Route::get('/magacin', ShowStocks::class)->name('stocks')->middleware(['roles:1']);
+    Route::get('/magacin/{stock}', ShowStock::class)->name('stock')->middleware(['roles:1']);
 
     //Helpers
     if(env('APP_DEBUG')){

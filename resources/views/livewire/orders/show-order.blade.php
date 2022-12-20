@@ -6,11 +6,18 @@
                 <h5 class="text-lg">Nazad</h5>
             </a>
         </div>
-        @if(!$isEdit && Auth::user()->hasRoles([1,2,3,5]))
-        <div class="flex cursor-pointer items-center hover:text-gray-500 px-0" wire:click="toggleEdit()">
-            <i class="fas fa-pen-square text-4xl"></i>
+        <div class="flex">
+            @if(!$isEdit && Auth::user()->hasRoles([1,2,3,5]))
+            <div class="flex cursor-pointer items-center hover:text-gray-500 px-0" wire:click="toggleEdit()">
+                <i class="fas fa-pen-square text-4xl"></i>
+            </div>
+            @endif
+            @if(!$isEdit && Auth::user()->hasRoles([1]))
+            <div class="flex cursor-pointer items-center text-red-700 hover:text-red-500 px-0 ml-3" wire:click="showDeleteModal()">
+                <i class="fas fa-trash text-2xl"></i>
+            </div>
+            @endif
         </div>
-        @endif
     </div>
 
     <div class="mb-3 flex items-center justify-between flex-col md:flex-row">
@@ -221,4 +228,6 @@
     <x-jet-section-border />
 
     @livewire('orders.comments', ["order" => $order])
+
+    @include('livewire.orders.delete-order')
 </div>

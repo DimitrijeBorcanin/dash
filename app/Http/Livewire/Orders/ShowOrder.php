@@ -55,6 +55,8 @@ class ShowOrder extends Component
         "currency" => []
     ];
 
+    public $deleteModal = false;
+
     public function mount(Order $order){
         $this->order = $order;
 
@@ -218,6 +220,27 @@ class ShowOrder extends Component
                 }
             }
         }
+    }
+
+    public function showDeleteModal(){
+        $this->deleteModal = true;
+    }
+
+    public function deleteOrder(){
+        try {
+            $this->order->delete();
+            $this->order->product()->delete();
+            return redirect($this->previousPage);
+        } catch (Throwable $e){
+            $this->dispatchBrowserEvent('flasherror', ['message' => 'Došlo je do greške!']);
+            if(env('APP_ENV') == 'local'){
+                dd($e->getMessage());
+            }
+        }
+    }
+
+    public function cancelDelete(){
+        $this->deleteModal = false;
     }
 
     public function render()
