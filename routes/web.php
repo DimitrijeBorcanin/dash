@@ -7,9 +7,11 @@ use App\Http\Livewire\Orders\Dashboard;
 use App\Http\Livewire\Orders\ShowOrder;
 use App\Http\Livewire\Orders\ShowProfit;
 use App\Http\Livewire\Product\CreateProduct;
+use App\Http\Livewire\Stock\CreateStock;
 use App\Http\Livewire\Stock\ShowStock;
 use App\Http\Livewire\Stock\ShowStocks;
 use App\Http\Livewire\User\ShowUsers;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -48,6 +50,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // Stocks 
     Route::get('/magacin', ShowStocks::class)->name('stocks')->middleware(['roles:1']);
+    Route::get('/magacin/dodaj', CreateStock::class)->name('stocks.create')->middleware(['roles:1']);
     Route::get('/magacin/{stock}', ShowStock::class)->name('stock')->middleware(['roles:1']);
 
     //Helpers

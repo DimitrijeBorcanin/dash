@@ -1,7 +1,7 @@
-<div>
-    <x-jet-form-section submit="updateStock">
+<div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <x-jet-form-section submit="createStock">
         <x-slot name="title">
-            
+            Dodajte novu stavku u magacin
         </x-slot>
     
         <x-slot name="description">
@@ -31,9 +31,11 @@
         </x-slot>
     
         <x-slot name="actions">
-            <x-jet-secondary-button class="mr-3" wire:click="cancelUpdate()">
-                Otkaži
-            </x-jet-secondary-button>
+            <a href="{{route('stocks')}}">
+                <x-jet-secondary-button class="mr-3">
+                    Otkaži
+                </x-jet-secondary-button>
+            </a>
 
             <x-jet-action-message class="mr-3" on="saved">
                 Sačuvano
