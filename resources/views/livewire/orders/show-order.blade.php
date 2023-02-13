@@ -207,15 +207,15 @@
     <x-jet-section-border />
 
     <div class="mt-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-6 px-3 md:px-0">
-        @if(Auth::user()->hasRoles([1,2,3,5]))
-        @livewire('orders.order-status', ['order' => $order, 'status' => "accepted", 'title' => "Za proizvodnju", 'roles' => [1,2,3,5]])
+        @if(Auth::user()->hasRoles([1,2,3,4,5]))
+        @livewire('orders.order-status', ['order' => $order, 'status' => "accepted", 'title' => "Za proizvodnju", 'roles' => [1,2,3,4,5]])
         @endif
         @livewire('orders.order-status', ['order' => $order, 'status' => "manufacture", 'title' => "U proizvodnji", 'roles' => [1,4]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "made", 'title' => "Proizvedeno", 'roles' => [1,4]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "transit", 'title' => "U tranzitu", 'roles' => [1,4]])
-        @if(Auth::user()->hasRoles([1,2,3,5]))
-        @livewire('orders.order-status', ['order' => $order, 'status' => "warehouse", 'title' => "U magacinu", 'roles' => [1,5]])
-        @livewire('orders.order-status', ['order' => $order, 'status' => "delivery", 'title' => "Isporučeno", 'roles' => [1,5]])
+        @if(Auth::user()->hasRoles([1,2,3,4,5]))
+        @livewire('orders.order-status', ['order' => $order, 'status' => "warehouse", 'title' => "U magacinu", 'roles' => [1,4,5]])
+        @livewire('orders.order-status', ['order' => $order, 'status' => "delivery", 'title' => "Isporučeno", 'roles' => [1,4,5]])
         @livewire('orders.order-status', ['order' => $order, 'status' => "paid", 'title' => "Razduženje", 'roles' => [1]])
         @endif
     </div>
