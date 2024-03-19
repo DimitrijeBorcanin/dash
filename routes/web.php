@@ -3,6 +3,9 @@
 use App\Http\Livewire\Customer\CreateCustomer;
 use App\Http\Livewire\Customer\ShowCustomer;
 use App\Http\Livewire\Customer\ShowCustomers;
+use App\Http\Livewire\Inventory\CreateInventory;
+use App\Http\Livewire\Inventory\ShowInventories;
+use App\Http\Livewire\Inventory\ShowInventory;
 use App\Http\Livewire\Orders\Dashboard;
 use App\Http\Livewire\Orders\ShowOrder;
 use App\Http\Livewire\Orders\ShowProfit;
@@ -53,6 +56,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/magacin/dodaj', CreateStock::class)->name('stocks.create')->middleware(['roles:1']);
     Route::get('/magacin/{stock}', ShowStock::class)->name('stock')->middleware(['roles:1']);
 
+    // Inventories 
+    Route::get('/magacin-novi', ShowInventories::class)->name('inventories')->middleware(['roles:1,4,5']);
+    Route::get('/magacin-novi/dodaj', CreateInventory::class)->name('inventories.create')->middleware(['roles:1,4,5']);
+    Route::get('/magacin-novi/{inventory}', ShowInventory::class)->name('inventory')->middleware(['roles:1,4,5']);
+
     //Helpers
     if(env('APP_DEBUG')){
         Route::get('/migrate-fresh', function(){
@@ -74,6 +82,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
         Route::get('/cron-test', function(){
             Artisan::call('command:instructionssent');
+        });
+
+        Route::get('/storage-link', function(){
+            Artisan::call('storage:link');
         });
     }
 });
