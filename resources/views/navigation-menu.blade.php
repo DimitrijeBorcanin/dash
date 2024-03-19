@@ -27,6 +27,11 @@
                         {{ __('Magacin') }}
                     </x-jet-nav-link>
                     @endif
+                    @if(Auth::user()->hasRoles([1,4,5]))
+                    <x-jet-nav-link href="{{ route('inventories') }}" :active="request()->routeIs('inventories')">
+                        {{ __('Magacin') }} @if(Auth::user()->hasRoles([1])) Novi @endif
+                    </x-jet-nav-link>
+                    @endif
                     @if(Auth::user()->hasRoles([1]))
                     <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
                         {{ __('Zaposleni') }}
@@ -167,6 +172,11 @@
             @if(Auth::user()->hasRoles([1]))
             <x-jet-responsive-nav-link href="{{ route('stocks') }}" :active="request()->routeIs('stocks')">
                 Magacin
+            </x-jet-responsive-nav-link>
+            @endif
+            @if(Auth::user()->hasRoles([1,4,5]))
+            <x-jet-responsive-nav-link href="{{ route('inventories') }}" :active="request()->routeIs('inventories')">
+                Magacin @if(Auth::user()->hasRoles([1])) Novi @endif
             </x-jet-responsive-nav-link>
             @endif
             @if(Auth::user()->hasRoles([1]))
